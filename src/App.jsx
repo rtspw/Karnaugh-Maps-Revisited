@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import MapPanel from './components/MapPanel';
+import MapPanel from './components/MapPanel.jsx';
+import Layout from './components/Layout.jsx';
 
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
@@ -22,8 +23,13 @@ function App() {
   return (
     <>
       <MapPanel onClick={handleClick}/>
-      <h1>Karnaugh Maps</h1>
-      <h>Test text</h>
+      <Layout 
+        title={`Karnaugh Map`}
+        subtitle={`${varNumPage} Variable`}  
+      >
+        <h>Test text</h>
+      </Layout>
+
     </>
   );
 }
