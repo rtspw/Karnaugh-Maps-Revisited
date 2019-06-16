@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
+import colors from '../util/colors';
+
 const buttonStyle = css`
   padding: 1rem;
-  color: #06a77d;
+  color: ${colors.main};
   font-weight: bold;
-  border-bottom: px solid #06a77d;
+  border-bottom: px solid ${colors.main};
   &:hover {
-    background: #06a77d;
+    background: ${colors.main};
     color: white;
     cursor: pointer;
   }
@@ -24,25 +26,20 @@ function MapPanel(props) {
       right: 20px;
       background: white;
       border-radius: 5px;
-      border: 2px solid #06a77d;
+      border: 2px solid ${colors.main};
     `}>
       <ul css={css`cursor: pointer;`}>
-        <li><button css={buttonStyle} onClick={onClick}>2</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(this)}>3</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(this)}>4</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(this)}>5</button></li>
+        <li><button css={buttonStyle} onClick={onClick.bind(null, 2)}>2</button></li>
+        <li><button css={buttonStyle} onClick={onClick.bind(null, 3)}>3</button></li>
+        <li><button css={buttonStyle} onClick={onClick.bind(null, 4)}>4</button></li>
+        <li><button css={buttonStyle} onClick={onClick.bind(null, 5)}>5</button></li>
       </ul>
     </nav>
   );
 }
-// /#03644b
 
 MapPanel.propTypes = {
-  onClick: PropTypes.func.isRequired,
-}
-
-MapPanel.defaultProps = {
-  onClick: () => {},
+  onClick: PropTypes.func,
 }
 
 export default MapPanel;
