@@ -3,36 +3,30 @@ import PropTypes from 'prop-types';
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
+import MapPanelButton from './MapPanelButton.jsx';
+
 import colors from '../util/colors';
 
-const buttonStyle = css`
-  padding: 1rem;
-  color: ${colors.main};
-  font-weight: bold;
-  border-bottom: px solid ${colors.main};
-  &:hover {
-    background: ${colors.main};
-    color: white;
-    cursor: pointer;
-  }
-`;
 
 function MapPanel(props) {
-  const { onClick } = props;
+  const { activeButton, onClick } = props;
   return (
     <nav css={css`
-      position: absolute;
-      top: 20px;
-      right: 20px;
       background: white;
       border-radius: 5px;
+      height: 40px;
       border: 2px solid ${colors.main};
     `}>
-      <ul css={css`cursor: pointer;`}>
-        <li><button css={buttonStyle} onClick={onClick.bind(null, 2)}>2</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(null, 3)}>3</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(null, 4)}>4</button></li>
-        <li><button css={buttonStyle} onClick={onClick.bind(null, 5)}>5</button></li>
+      <ul css={css`
+        cursor: pointer;
+        display: flex;
+        height: 100%;
+        align-items: stretch;
+      `}>
+        <MapPanelButton onClick={onClick} varNum={2} activeButtonNum={activeButton} />
+        <MapPanelButton onClick={onClick} varNum={3} activeButtonNum={activeButton} />
+        <MapPanelButton onClick={onClick} varNum={4} activeButtonNum={activeButton} />
+        <MapPanelButton onClick={onClick} varNum={5} activeButtonNum={activeButton} />
       </ul>
     </nav>
   );
@@ -40,6 +34,7 @@ function MapPanel(props) {
 
 MapPanel.propTypes = {
   onClick: PropTypes.func,
+  activeButton: PropTypes.number,
 }
 
 export default MapPanel;

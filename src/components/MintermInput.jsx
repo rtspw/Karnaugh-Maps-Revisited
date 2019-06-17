@@ -47,12 +47,7 @@ function MintermInput(props) {
       css={css`
         display: flex;
         justify-content: center;
-        position: absolute;
-        bottom: 0px;
-        left: 0;
-        right: 0;
         background: rgba(0, 0, 0, 0.05);
-        padding: 20px 0;
       `}
       onSubmit={ onFormSubmit }
     >
@@ -69,7 +64,6 @@ function MintermInput(props) {
             border: 2px solid ${colors.main};
             border-radius: 5px;
             height: 40px;
-            width: 60%;
             text-align: center;
             margin-left: 0.75rem;
             color: ${colors.main};
