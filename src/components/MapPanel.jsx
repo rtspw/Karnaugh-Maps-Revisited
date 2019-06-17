@@ -11,24 +11,34 @@ import colors from '../util/colors';
 function MapPanel(props) {
   const { activeButton, onClick } = props;
   return (
-    <nav css={css`
-      background: white;
-      border-radius: 5px;
-      height: 40px;
-      border: 2px solid ${colors.main};
+    <div css={css`
+      color: ${colors.main};
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: left;
+      height: 100%;
     `}>
-      <ul css={css`
-        cursor: pointer;
-        display: flex;
-        height: 100%;
-        align-items: stretch;
+      Variables
+      <nav css={css`
+        background: white;
+        border-radius: 5px;
+        height: 40px;
+        border: 2px solid ${colors.main};
       `}>
-        <MapPanelButton onClick={onClick} varNum={2} activeButtonNum={activeButton} />
-        <MapPanelButton onClick={onClick} varNum={3} activeButtonNum={activeButton} />
-        <MapPanelButton onClick={onClick} varNum={4} activeButtonNum={activeButton} />
-        <MapPanelButton onClick={onClick} varNum={5} activeButtonNum={activeButton} />
-      </ul>
-    </nav>
+
+        <ul css={css`
+          display: flex;
+          height: 100%;
+        `}>
+          <MapPanelButton onClick={onClick} varNum={2} activeButtonNum={activeButton} />
+          <MapPanelButton onClick={onClick} varNum={3} activeButtonNum={activeButton} />
+          <MapPanelButton onClick={onClick} varNum={4} activeButtonNum={activeButton} />
+          <MapPanelButton onClick={onClick} varNum={5} activeButtonNum={activeButton} />
+        </ul>
+      </nav>
+    </div>
   );
 }
 

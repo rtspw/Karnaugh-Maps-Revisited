@@ -56,8 +56,9 @@ function MintermInput(props) {
         color: ${colors.main};
         font-weight: bold;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: left;
       `}>
         Minterms
         <input 
@@ -66,7 +67,6 @@ function MintermInput(props) {
             border-radius: 5px;
             height: 40px;
             text-align: center;
-            margin-left: 0.75rem;
             color: ${colors.main};
             font-family: inherit;
             font-size: 1rem;

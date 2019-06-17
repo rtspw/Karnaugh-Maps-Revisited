@@ -19,7 +19,7 @@ function BottomBar(props) {
       display: flex;
       align-items: center;
       justify-content: space-around;
-      padding: 20px 0;
+      padding: 2rem 0;
     `}>
       <MintermInput onMintermInput={onMintermInput} />
       <MapPanel onClick={onPanelClick} activeButton={activeButton}/>

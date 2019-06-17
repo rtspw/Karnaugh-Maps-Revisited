@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import MapPanel from './components/MapPanel.jsx';
-import MintermInput from './components/MintermInput.jsx';
 import Layout from './components/Layout.jsx';
 import BottomBar from './components/BottomBar.jsx';
 
@@ -18,7 +16,7 @@ function App() {
   });
   
   useEffect(() => {
-    console.log(varNumPage);
+    console.log(activeMinterms);
     document.title = `${varNumPage} Variable K-Map Visual`;
   });
 
@@ -34,7 +32,7 @@ function App() {
     <>
       <Layout 
         title={`Karnaugh Map`}
-        subtitle={`${varNumPage} Variable`}  
+        subtitle={`${varNumPage} Variables`}  
       >
       </Layout>
       <BottomBar 

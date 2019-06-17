@@ -10,10 +10,10 @@ const buttonStyle = css`
   height: 100%;
   color: ${colors.main};
   font-weight: bold;
+  cursor: pointer;
   &:hover {
     background: ${colors.main};
     color: white;
-    cursor: pointer;
   }
 `;
 
@@ -22,8 +22,8 @@ const activeButtonStyle = css`
   height: 100%;
   background: ${colors.main};
   font-weight: bold;
-  color: white;
   cursor: pointer;
+  color: white;
 `;
 
 function MapPanelButton(props) {
@@ -33,7 +33,6 @@ function MapPanelButton(props) {
   
   return (
     <li>
-      {  }
       <button css={style} onClick={onClick.bind(null, varNum)}>
         {varNum}
       </button>
