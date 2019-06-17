@@ -12,7 +12,7 @@ function BottomBar(props) {
   const { activeButton, onMintermInput, onPanelClick } = props;
   return (
     <div css={css`
-      position: absolute;
+      position: fixed;
       bottom: 0;
       right: 0;
       left: 0;

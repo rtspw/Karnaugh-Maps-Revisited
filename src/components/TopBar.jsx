@@ -9,12 +9,9 @@ function TopBar(props) {
   const { children, title, subtitle } = props;
   return (
     <div css={css`
-      background: #eee;
       display: flex;
       flex-direction: column;
       padding: 1rem;
-      height: 100vh;
-      // margin-right: ${48 + 40}px;
     `}>
       <header css={css`
         text-align: center;
