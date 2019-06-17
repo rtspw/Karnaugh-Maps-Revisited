@@ -59,6 +59,9 @@ function MintermInput(props) {
       <label css={css`
         color: ${colors.main};
         font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       `}>
         Minterms
         <input 
@@ -68,7 +71,7 @@ function MintermInput(props) {
             height: 40px;
             width: 60%;
             text-align: center;
-            margin-left: 1rem;
+            margin-left: 0.75rem;
             color: ${colors.main};
             font-family: inherit;
             font-size: 1rem;

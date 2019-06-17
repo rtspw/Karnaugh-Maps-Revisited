@@ -37,7 +37,6 @@ function App() {
         title={`Karnaugh Map`}
         subtitle={`${varNumPage} Variable`}  
       >
-        <h>Test text</h>
       </Layout>
     </>
   );
