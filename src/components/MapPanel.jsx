@@ -19,6 +19,7 @@ function MapPanel(props) {
       justify-content: center;
       align-items: left;
       height: 100%;
+      padding: 0 1.5rem;
     `}>
       Variables
       <nav css={css`

@@ -49,6 +49,8 @@ function MintermInput(props) {
       css={css`
         display: flex;
         justify-content: center;
+        width: 500px;
+        padding: 0 1.5rem;
       `}
       onSubmit={ onFormSubmit }
     >
@@ -59,6 +61,7 @@ function MintermInput(props) {
         flex-direction: column;
         justify-content: center;
         align-items: left;
+        width: 100%;
       `}>
         Minterms
         <input 
@@ -76,7 +79,7 @@ function MintermInput(props) {
           name="minterm-input"
           placeholder="2 3 d4 10..."
           value={minterms}
-          onChange={ onUserInput }
+          onChange={onUserInput}
         />
       </label>
     </form>
