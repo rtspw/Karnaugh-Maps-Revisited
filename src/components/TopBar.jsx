@@ -5,7 +5,7 @@ import { jsx, css } from '@emotion/core';
 
 import colors from '../util/colors';
 
-function Layout(props) {
+function TopBar(props) {
   const { children, title, subtitle } = props;
   return (
     <div css={css`
@@ -36,10 +36,10 @@ function Layout(props) {
   );
 }
 
-Layout.propTypes = {
+TopBar.propTypes = {
   children: PropTypes.object,
   title: PropTypes.string,
   subtitle: PropTypes.string,
 };
 
-export default Layout;
+export default TopBar;

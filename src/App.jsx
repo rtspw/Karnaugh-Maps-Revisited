@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Layout from './components/Layout.jsx';
+import TopBar from './components/TopBar.jsx';
 import BottomBar from './components/BottomBar.jsx';
 
 import { jsx, css } from '@emotion/core';
@@ -20,7 +20,7 @@ function App() {
     document.title = `${varNumPage} Variable K-Map Visual`;
   });
 
-  function handleClick(varNum) {
+  function handlePanelClick(varNum) {
     setVarNumPage(varNum);
   }
 
@@ -30,14 +30,13 @@ function App() {
 
   return (
     <>
-      <Layout 
+      <TopBar 
         title={`Karnaugh Map`}
         subtitle={`${varNumPage} Variables`}  
-      >
-      </Layout>
+      />
       <BottomBar 
         onMintermInput={onMintermInput}
-        onPanelClick={handleClick} 
+        onPanelClick={handlePanelClick} 
         activeButton={varNumPage}
       />
     </>
