@@ -15,7 +15,9 @@ function convertMintermStringToObj(mintermStr) {
     .filter(termStr => termStr !== '')
     .forEach((termStr) => {
       if (termStr[0] === 'd') {
-        minterms.dontCares.add(Number.parseInt(termStr.substring(1)));
+        const dontcareTerm = Number.parseInt(termStr.substring(1));
+        if (Number.isNaN(dontcareTerm)) return;
+        minterms.dontCares.add(dontcareTerm);
       } else { 
         minterms.terms.add(Number.parseInt(termStr));
       }
@@ -47,7 +49,6 @@ function MintermInput(props) {
       css={css`
         display: flex;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.05);
       `}
       onSubmit={ onFormSubmit }
     >
