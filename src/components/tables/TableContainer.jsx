@@ -4,7 +4,6 @@ import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
 import TwoVarTable from './TwoVarTable.jsx';
-import TwoVarTruthTable from './TwoVarTruthTable.jsx';
 
 import colors from '../../util/colors';
 
@@ -14,11 +13,9 @@ function TableContainer(props) {
     <div css={css`
       display: flex;
       justify-content: center;
-      /background: orange;
-      max-height: 70%;
+      flex-direction: row;
     `}>
       <TwoVarTable />
-      <TwoVarTruthTable />
     </div>
   );
 }

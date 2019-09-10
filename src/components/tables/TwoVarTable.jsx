@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
+import TableRow from './TableRow.jsx';
+import TableTopLabelBar from './TableTopLabelBar.jsx';
+import TableLeftLabelBar from './TableLeftLabelBar.jsx';
+
 import colors from '../../util/colors';
 
 function TwoVarTable(props) {
@@ -11,10 +15,19 @@ function TwoVarTable(props) {
   
   return (
     <div css={css`
-      flex-grow: 1;
-      flex-basis: 50vw;
+      display: flex;
+      flex-direction: rows;
     `}>
-      hi
+      <TableLeftLabelBar labels={["A'", "A"]} />
+      <div css={css`
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      `}>
+        <TableTopLabelBar labels={["B'", "B"]} />
+        <TableRow tileAmount={2} numOfTerms={1} leftTerms={'0'} />
+        <TableRow tileAmount={2} numOfTerms={1} leftTerms={'1'} />
+      </div>
     </div>
   );
 }

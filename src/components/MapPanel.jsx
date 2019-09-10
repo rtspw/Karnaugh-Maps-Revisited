@@ -37,6 +37,7 @@ function MapPanel(props) {
           <MapPanelButton onClick={onClick} varNum={3} activeButtonNum={activeButton} />
           <MapPanelButton onClick={onClick} varNum={4} activeButtonNum={activeButton} />
           <MapPanelButton onClick={onClick} varNum={5} activeButtonNum={activeButton} />
+          <MapPanelButton onClick={onClick} varNum={6} activeButtonNum={activeButton} />
         </ul>
       </nav>
     </div>
