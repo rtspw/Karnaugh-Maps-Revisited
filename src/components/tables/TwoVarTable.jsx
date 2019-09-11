@@ -18,15 +18,17 @@ function TwoVarTable(props) {
       display: flex;
       flex-direction: rows;
     `}>
-      <TableLeftLabelBar labels={["A'", "A"]} />
+      <TableLeftLabelBar labels={["A'B'", "A'B", "AB", "AB'"]} />
       <div css={css`
         display: flex;
         flex-direction: column;
         position: relative;
       `}>
-        <TableTopLabelBar labels={["B'", "B"]} />
-        <TableRow tileAmount={2} numOfTerms={1} leftTerms={'0'} />
-        <TableRow tileAmount={2} numOfTerms={1} leftTerms={'1'} />
+        <TableTopLabelBar labels={["C'D'", "C'D", "CD", "CD'"]} />
+        <TableRow tileAmount={4} numOfTerms={2} leftTerms={'00'} />
+        <TableRow tileAmount={4} numOfTerms={2} leftTerms={'01'} />
+        <TableRow tileAmount={4} numOfTerms={2} leftTerms={'11'} />
+        <TableRow tileAmount={4} numOfTerms={2} leftTerms={'10'} />
       </div>
     </div>
   );

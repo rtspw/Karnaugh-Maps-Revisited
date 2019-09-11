@@ -10,8 +10,10 @@ function TableRow(props) {
   const { tileAmount, numOfTerms, leftTerms } = props;
 
   const tiles = [];
+  const columnSequence = [0, 1, 3, 2];
   for (let i = 0; i < tileAmount; i++) {
-    const mintermBinaryValue = leftTerms + i.toString(2).padStart(numOfTerms, '0');
+    const columnValue = columnSequence[i] ? columnSequence[i] : 0;
+    const mintermBinaryValue = leftTerms + columnValue.toString(2).padStart(numOfTerms, '0');
     const mintermDecimalValue = parseInt(mintermBinaryValue, 2);
     tiles.push(
       <div css={css`
@@ -21,11 +23,21 @@ function TableRow(props) {
         <div css={css`
           width: 100%;
           height: 100%;
-          background: rgba(5, 26, 44, 0.1);
+          background: rgba(0, 100, 50, 0.03);
           font-size: 0.8rem;
           padding: 5px;
+          border-radius: 2px;
+          position: relative;
         `}>
           {mintermDecimalValue}
+          <p css={css`
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+          `}>
+            {mintermBinaryValue}
+          </p>
+          
         </div>
       </div>
     );

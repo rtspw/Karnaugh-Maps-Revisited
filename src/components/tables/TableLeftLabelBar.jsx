@@ -10,13 +10,14 @@ function TableLeftLabelBar(props) {
 
   const labelElements = [];
 
-  for (const label of labels) {
+  for (const label of labels.reverse()) {
     labelElements.push(<div css={css`
       display: flex;
       flex-direction: column;
       justify-content: center;
       height: 75px;
       padding: 0 2px;
+      margin-right: 15px;
     `}>
       {label}
     </div>);

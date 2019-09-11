@@ -21,6 +21,7 @@ function TableTopLabelBar(props) {
     <div css={css`
       display: flex;
       flex-direction: row;
+      margin-bottom: 15px;
     `}>
       {labelElements}
     </div>

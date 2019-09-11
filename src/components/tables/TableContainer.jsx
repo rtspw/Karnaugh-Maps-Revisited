@@ -13,7 +13,9 @@ function TableContainer(props) {
     <div css={css`
       display: flex;
       justify-content: center;
-      flex-direction: row;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px 0;
     `}>
       <TwoVarTable />
     </div>
