@@ -10,7 +10,8 @@ function TableLeftLabelBar(props) {
 
   const labelElements = [];
 
-  for (const label of labels.reverse()) {
+  labels.reverse().forEach((label, idx) => {
+    const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-bottom: 15px;' : '';
     labelElements.push(<div css={css`
       display: flex;
       flex-direction: column;
@@ -18,11 +19,12 @@ function TableLeftLabelBar(props) {
       height: 75px;
       padding: 0 2px;
       margin-right: 15px;
+      ${separatorStyling}
     `}>
       {label}
     </div>);
-  }
-  
+  });
+    
   return (
     <div css={css`
       display: flex;
@@ -32,6 +34,7 @@ function TableLeftLabelBar(props) {
     </div>
   );
 }
+
 
 TableLeftLabelBar.propTypes = {
   labels: PropTypes.array.isRequired,

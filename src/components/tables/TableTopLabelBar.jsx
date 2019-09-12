@@ -10,12 +10,17 @@ function TableTopLabelBar(props) {
 
   const labelElements = [];
 
-  for (const label of labels) {
+  labels.forEach((label, idx) => {
+    const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-left: 15px;' : '';
     labelElements.push(<div css={css`
       width: 75px;
       text-align: center;
-    `}>{label}</div>);
-  }
+      ${separatorStyling}
+    `}>
+      {label}
+    </div>);
+  })
+  
   
   return (
     <div css={css`

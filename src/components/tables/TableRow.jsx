@@ -11,13 +11,15 @@ function TableRow(props) {
 
   const tiles = [];
 
-  for (const topTerm of topTerms) {
+  topTerms.forEach((topTerm, idx) => {
     const mintermBinaryValue = leftTerm + topTerm;
     const mintermDecimalValue = parseInt(mintermBinaryValue, 2);
+    const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-left: 15px;' : '';
     tiles.push(
       <div css={css`
         width: 75px;
         padding: 2px;
+        ${separatorStyling}
       `}>
         <div css={css`
           width: 100%;
@@ -39,7 +41,7 @@ function TableRow(props) {
         </div>
       </div>
     );
-  }
+  });
   
   return (
     <div css={css`

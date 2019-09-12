@@ -31,6 +31,18 @@ function GridVisualTable(props) {
   const leftLabels = leftTerms.map(term => convertBinaryStringToVariableMinterm(term, leftLabelMap));
   const topLabels = topTerms.map(term => convertBinaryStringToVariableMinterm(term, topLabelMap));
 
+  const tableRows = leftTerms.map((leftTerm, idx) => {
+    const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-top: 15px;' : '';
+    return <div css={css`
+      ${separatorStyling}
+    `}>
+      <TableRow 
+        topTerms={topTerms} 
+        leftTerm={leftTerm} 
+      />
+    </div>
+  });
+
   return (
     <div css={css`
       display: flex;
@@ -43,9 +55,7 @@ function GridVisualTable(props) {
         position: relative;
       `}>
         <TableTopLabelBar labels={topLabels} />
-        { leftTerms.map(leftTerm => {
-          return <TableRow topTerms={topTerms} leftTerm={leftTerm} />
-        }) }
+        { tableRows }
       </div>
     </div>
   );
