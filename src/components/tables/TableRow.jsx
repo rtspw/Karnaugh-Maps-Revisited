@@ -7,13 +7,12 @@ import colors from '../../util/colors';
 
 
 function TableRow(props) {
-  const { tileAmount, numOfTerms, leftTerms } = props;
+  const { topTerms, leftTerm } = props;
 
   const tiles = [];
-  const columnSequence = [0, 1, 3, 2];
-  for (let i = 0; i < tileAmount; i++) {
-    const columnValue = columnSequence[i] ? columnSequence[i] : 0;
-    const mintermBinaryValue = leftTerms + columnValue.toString(2).padStart(numOfTerms, '0');
+
+  for (const topTerm of topTerms) {
+    const mintermBinaryValue = leftTerm + topTerm;
     const mintermDecimalValue = parseInt(mintermBinaryValue, 2);
     tiles.push(
       <div css={css`
@@ -37,7 +36,6 @@ function TableRow(props) {
           `}>
             {mintermBinaryValue}
           </p>
-          
         </div>
       </div>
     );
@@ -55,9 +53,8 @@ function TableRow(props) {
 }
 
 TableRow.propTypes = {
-  tileAmount: PropTypes.number.isRequired,
-  numOfTerms: PropTypes.number.isRequired,
-  leftTerms: PropTypes.number.isRequired,
+  topTerms: PropTypes.array.isRequired,
+  leftTerm: PropTypes.number.isRequired,
 };
 
 export default TableRow;

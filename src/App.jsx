@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { jsx, css } from '@emotion/core';
+import { jsx, Global, css } from '@emotion/core';
 /** @jsx jsx */
 
 import TopBar from './components/TopBar.jsx';
 import BottomBar from './components/BottomBar.jsx';
-import TwoVarTable from './components/tables/TwoVarTable.jsx';
 import TableContainer from './components/tables/TableContainer.jsx';
 
 import colors from './util/colors';
@@ -31,14 +30,20 @@ function App() {
 
   return (
     <div css={css`
-      background: ${colors.background};
       height: 100vh;
     `}>
+      <Global styles={css`
+        body {
+          background: ${colors.background};
+        }
+      `} />
       <TopBar 
         title={`Karnaugh Map`}
         subtitle={`${varNumPage} Variables`}  
       />
-      <TableContainer />
+      <TableContainer 
+        varNum={varNumPage}
+      />
       <BottomBar 
         onMintermInput={onMintermInput}
         onPanelClick={handlePanelClick} 
