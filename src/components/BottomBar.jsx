@@ -5,11 +5,12 @@ import { jsx, css } from '@emotion/core';
 
 import MapPanel from './MapPanel.jsx';
 import MintermInput from './MintermInput.jsx';
+import ClearButton from './ClearButton.jsx';
 
 import colors from '../util/colors';
 
 function BottomBar(props) {
-  const { activeButton, onMintermInput, onPanelClick } = props;
+  const { activeButton, onMintermInput, onClearButtonClick, onPanelClick } = props;
   return (
     <div css={css`
       position: fixed;
@@ -21,7 +22,13 @@ function BottomBar(props) {
       justify-content: space-around;
       padding: 2rem 0;
     `}>
-      <MintermInput onMintermInput={onMintermInput} />
+      <div css={css`
+        display: flex;
+        flex-direction: row;
+      `}>
+        <MintermInput onMintermInput={onMintermInput} />
+        <ClearButton onClick={onClearButtonClick} />
+      </div>
       <MapPanel onClick={onPanelClick} activeButton={activeButton}/>
     </div>
   );
@@ -29,6 +36,7 @@ function BottomBar(props) {
 
 BottomBar.propTypes = {
   onMintermInput: PropTypes.func,
+  onClearButtonClick: PropTypes.func,
   onPanelClick: PropTypes.func,
   activeButton: PropTypes.number,
 }

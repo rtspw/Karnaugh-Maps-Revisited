@@ -35,6 +35,10 @@ function App() {
     setGridBoxSize(tableData[varNum].gridSize);
   }
 
+  function handleClearButtonClick() {
+    setGridValues(new Array(Math.pow(2, varNumPage)).fill('0'));
+  }
+
   function onMintermInput(minterms) {
     setActiveMinterms(minterms);
     const newGridValues = new Array(Math.pow(2, varNumPage)).fill('0');
@@ -80,6 +84,7 @@ function App() {
       />
       <BottomBar 
         onMintermInput={onMintermInput}
+        onClearButtonClick={handleClearButtonClick}
         onPanelClick={handlePanelClick} 
         activeButton={varNumPage}
       />
