@@ -10,7 +10,7 @@ import tableData from '../../util/tableData';
 import GridVisualTable from './GridVisualTable.jsx';
 
 function TableContainer(props) {
-  const { varNum, gridValues, onGridButtonClick } = props;
+  const { varNum, gridValues, onGridButtonClick, gridBoxSize } = props;
   const { 
     leftTerms, 
     topTerms,
@@ -34,6 +34,7 @@ function TableContainer(props) {
         topLabelMap={topLabelMap}
         gridValues={gridValues}
         onClick={onGridButtonClick}
+        gridBoxSize={gridBoxSize}
       />
     </div>
   );
@@ -43,6 +44,11 @@ TableContainer.propTypes = {
   varNum: PropTypes.number.isRequired,
   gridValues: PropTypes.array.isRequired,
   onGridButtonClick: PropTypes.func.isRequired,
+  gridBoxSize: PropTypes.string,
+};
+
+TableContainer.defaultProps = {
+  gridBoxSize: '75px',
 };
 
 export default TableContainer;

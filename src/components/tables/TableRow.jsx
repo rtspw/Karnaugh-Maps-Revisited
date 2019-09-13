@@ -8,7 +8,7 @@ import colors from '../../util/colors';
 import GridButton from './GridButton';
 
 function TableRow(props) {
-  const { topTerms, leftTerm, gridValues, onClick } = props;
+  const { topTerms, leftTerm, gridValues, onClick, gridBoxSize } = props;
 
   const tiles = [];
 
@@ -18,7 +18,7 @@ function TableRow(props) {
     const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-left: 15px;' : '';
     tiles.push(
       <div css={css`
-        width: 75px;
+        width: ${gridBoxSize};
         padding: 2px;
         ${separatorStyling}
       `}>
@@ -36,7 +36,7 @@ function TableRow(props) {
     <div css={css`
       display: flex;
       flex-direction: row;
-      height: 75px;
+      height: ${gridBoxSize};
     `}>
       {tiles}
     </div>
@@ -48,6 +48,7 @@ TableRow.propTypes = {
   leftTerm: PropTypes.string.isRequired,
   gridValues: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
+  gridBoxSize: PropTypes.string.isRequired,
 };
 
 export default TableRow;

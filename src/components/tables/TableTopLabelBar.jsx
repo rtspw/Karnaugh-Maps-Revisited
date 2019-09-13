@@ -6,14 +6,14 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 
 function TableTopLabelBar(props) {
-  const { labels } = props;
+  const { labels, gridBoxSize } = props;
 
   const labelElements = [];
 
   labels.forEach((label, idx) => {
     const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-left: 15px;' : '';
     labelElements.push(<div css={css`
-      width: 75px;
+      width: ${gridBoxSize};
       text-align: center;
       ${separatorStyling}
     `}>
@@ -35,6 +35,7 @@ function TableTopLabelBar(props) {
 
 TableTopLabelBar.propTypes = {
   labels: PropTypes.array.isRequired,
+  gridBoxSize: PropTypes.string.isRequired,
 };
 
 export default TableTopLabelBar;

@@ -7,11 +7,12 @@ import BottomBar from './components/BottomBar.jsx';
 import TableContainer from './components/tables/TableContainer.jsx';
 
 import colors from './util/colors';
-
+import tableData from './util/tableData';
 
 function App() {
   const [varNumPage, setVarNumPage] = useState(2);
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill('0'));
+  const [gridBoxSize, setGridBoxSize] = useState('200px');
   const [activeMinterms, setActiveMinterms] = useState({
     terms: [],
     dontCares: [],
@@ -31,6 +32,7 @@ function App() {
       newGridValues[termIdx] = 'X';
     })
     setGridValues(newGridValues);
+    setGridBoxSize(tableData[varNum].gridSize);
   }
 
   function onMintermInput(minterms) {
@@ -74,6 +76,7 @@ function App() {
         varNum={varNumPage}
         gridValues={gridValues}
         onGridButtonClick={onGridButtonClick}
+        gridBoxSize={gridBoxSize}
       />
       <BottomBar 
         onMintermInput={onMintermInput}

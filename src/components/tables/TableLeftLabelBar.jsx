@@ -6,7 +6,7 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 
 function TableLeftLabelBar(props) {
-  const { labels } = props;
+  const { labels, gridBoxSize } = props;
 
   const labelElements = [];
 
@@ -16,7 +16,7 @@ function TableLeftLabelBar(props) {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 75px;
+      height: ${gridBoxSize};
       padding: 0 2px;
       margin-right: 15px;
       ${separatorStyling}
@@ -38,6 +38,7 @@ function TableLeftLabelBar(props) {
 
 TableLeftLabelBar.propTypes = {
   labels: PropTypes.array.isRequired,
+  gridBoxSize: PropTypes.string.isRequired,
 };
 
 export default TableLeftLabelBar;
