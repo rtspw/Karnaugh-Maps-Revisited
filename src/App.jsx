@@ -8,11 +8,13 @@ import TableContainer from './components/tables/TableContainer.jsx';
 
 import colors from './util/colors';
 import tableData from './util/tableData';
+import MintermList from './map-solver/minterm-list';
 
 function App() {
   const [varNumPage, setVarNumPage] = useState(2);
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill('0'));
   const [gridBoxSize, setGridBoxSize] = useState('200px');
+  const [mintermGroups, setMintermGroups] = useState({});
   const [activeMinterms, setActiveMinterms] = useState({
     terms: [],
     dontCares: [],
@@ -25,18 +27,14 @@ function App() {
   function handlePanelClick(varNum) {
     setVarNumPage(varNum);
     const newGridValues = new Array(Math.pow(2, varNum)).fill('0');
-    activeMinterms.terms.forEach(termIdx => {
-      newGridValues[termIdx] = '1';
-    })
-    activeMinterms.dontCares.forEach(termIdx => {
-      newGridValues[termIdx] = 'X';
-    })
     setGridValues(newGridValues);
     setGridBoxSize(tableData[varNum].gridSize);
+    setMintermGroups([]);
   }
 
   function handleClearButtonClick() {
     setGridValues(new Array(Math.pow(2, varNumPage)).fill('0'));
+    setMintermGroups([]);
   }
 
   function onMintermInput(minterms) {
@@ -59,9 +57,11 @@ function App() {
     setGridValues(gridValuesCopy);
     const terms = gridValuesCopy.map((x, idx) => (x === '1') ? idx : null).filter(x => x !== null);
     const dontCares = gridValuesCopy.map((x, idx) => (x === 'X') ? idx : null).filter(x => x !== null);
-    setActiveMinterms({ terms, dontCares });
+    const newActiveMinterms = { terms, dontCares };
+    setActiveMinterms(newActiveMinterms);
+    setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups());
   }
-  console.log(activeMinterms);
+  console.log(mintermGroups);
 
   return (
     <div css={css`
