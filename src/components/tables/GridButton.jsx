@@ -10,21 +10,21 @@ function GridButton(props) {
   const { binaryValue, decimalValue, gridValue, onClick } = props;
   const valueStyling = (() => {
     if (gridValue === '1') {
-      return 'border: 2px solid red;';
+      return `border: 2px solid ${colors.gridButtonTrue};`;
     } else if (gridValue === 'X') {
-      return 'border: 2px solid orange;';
+      return `border: 2px solid ${colors.gridButtonDontCare};`;
     }
   })();
   return (
     <button css={css`
         width: 100%;
         height: 100%;
-        background: rgba(0, 100, 50, 0.03);
+        background: ${colors.gridButton};
         border-radius: 3px;
         position: relative;
         &:hover {
           cursor: pointer;
-          outline: 2px solid rgba(0, 0, 0, 0.3);
+          outline: 2px solid ${colors.gridButtonHover};
         }
         ${valueStyling}
       `}
