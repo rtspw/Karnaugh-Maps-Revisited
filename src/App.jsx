@@ -3,7 +3,7 @@ import { jsx, Global, css } from '@emotion/core';
 /** @jsx jsx */
 
 import TopBar from './components/TopBar.jsx';
-import BottomBar from './components/BottomBar.jsx';
+import BottomBar from './components/bottom-bar/BottomBar.jsx';
 import TableContainer from './components/tables/TableContainer.jsx';
 
 import colors from './util/colors';

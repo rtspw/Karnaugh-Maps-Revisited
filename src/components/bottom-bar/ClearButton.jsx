@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
 
-import colors from '../util/colors';
+import colors from '../../util/colors';
 
 const buttonStyle = css`
   padding: 0 1rem;
@@ -13,7 +13,7 @@ const buttonStyle = css`
   color: ${colors.main};
   background: white;
   border-radius: 5px;
-  border: 2px solid ${colors.main};o
+  border: 2px solid ${colors.main};
   font-weight: bold;
   cursor: pointer;
   &:hover {

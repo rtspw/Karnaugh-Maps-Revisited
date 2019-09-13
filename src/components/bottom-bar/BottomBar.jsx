@@ -7,7 +7,7 @@ import MapPanel from './MapPanel.jsx';
 import MintermInput from './MintermInput.jsx';
 import ClearButton from './ClearButton.jsx';
 
-import colors from '../util/colors';
+import colors from '../../util/colors';
 
 function BottomBar(props) {
   const { activeButton, onMintermInput, onClearButtonClick, onPanelClick } = props;

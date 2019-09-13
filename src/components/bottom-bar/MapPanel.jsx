@@ -5,7 +5,7 @@ import { jsx, css } from '@emotion/core';
 
 import MapPanelButton from './MapPanelButton.jsx';
 
-import colors from '../util/colors';
+import colors from '../../util/colors';
 
 
 function MapPanel(props) {

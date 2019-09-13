@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
 
-import colors from '../util/colors';
+import colors from '../../util/colors';
 
 const buttonStyle = css`
   padding: 0 1rem;
