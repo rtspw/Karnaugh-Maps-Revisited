@@ -35,6 +35,10 @@ function App() {
 
   function onMintermInput(minterms) {
     setActiveMinterms(minterms);
+    const newGridValues = new Array(Math.pow(2, varNumPage)).fill('0');
+    minterms.terms.forEach(term => newGridValues[term] = '1');
+    minterms.dontCares.forEach(term => newGridValues[term] = 'X');
+    setGridValues(newGridValues);
   }
 
   function onGridButtonClick(decimalValue) {

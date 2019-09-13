@@ -22,6 +22,8 @@ function convertMintermStringToObj(mintermStr) {
         minterms.terms.add(Number.parseInt(termStr));
       }
   });
+  minterms.terms = Array.from(minterms.terms);
+  minterms.dontCares = Array.from(minterms.dontCares);
   return minterms;
 }
 
