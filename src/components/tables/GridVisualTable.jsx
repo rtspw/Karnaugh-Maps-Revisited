@@ -26,6 +26,8 @@ function GridVisualTable(props) {
     topTerms, 
     leftLabelMap, 
     topLabelMap, 
+    gridValues,
+    onClick,
   } = props;
 
   const leftLabels = leftTerms.map(term => convertBinaryStringToVariableMinterm(term, leftLabelMap));
@@ -39,6 +41,8 @@ function GridVisualTable(props) {
       <TableRow 
         topTerms={topTerms} 
         leftTerm={leftTerm} 
+        gridValues={gridValues}
+        onClick={onClick}
       />
     </div>
   });
@@ -66,6 +70,8 @@ GridVisualTable.propTypes = {
   topTerms: PropTypes.array.isRequired,
   leftLabelMap: PropTypes.array.isRequired,
   topLabelMap: PropTypes.array.isRequired,
+  gridValues: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default GridVisualTable;

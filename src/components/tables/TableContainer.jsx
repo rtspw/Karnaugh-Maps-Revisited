@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import PropTypes from 'prop-types';
 import { jsx, css } from '@emotion/core';
 /** @jsx jsx */
@@ -9,7 +10,7 @@ import tableData from '../../util/tableData';
 import GridVisualTable from './GridVisualTable.jsx';
 
 function TableContainer(props) {
-  const { varNum } = props;
+  const { varNum, gridValues, onGridButtonClick } = props;
   const { 
     leftTerms, 
     topTerms,
@@ -31,6 +32,8 @@ function TableContainer(props) {
         topTerms={topTerms}
         leftLabelMap={leftLabelMap}
         topLabelMap={topLabelMap}
+        gridValues={gridValues}
+        onClick={onGridButtonClick}
       />
     </div>
   );
@@ -38,6 +41,8 @@ function TableContainer(props) {
 
 TableContainer.propTypes = {
   varNum: PropTypes.number.isRequired,
+  gridValues: PropTypes.array.isRequired,
+  onGridButtonClick: PropTypes.func.isRequired,
 };
 
 export default TableContainer;

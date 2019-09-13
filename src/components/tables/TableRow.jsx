@@ -5,9 +5,10 @@ import { jsx, css } from '@emotion/core';
 
 import colors from '../../util/colors';
 
+import GridButton from './GridButton';
 
 function TableRow(props) {
-  const { topTerms, leftTerm } = props;
+  const { topTerms, leftTerm, gridValues, onClick } = props;
 
   const tiles = [];
 
@@ -21,24 +22,12 @@ function TableRow(props) {
         padding: 2px;
         ${separatorStyling}
       `}>
-        <div css={css`
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 100, 50, 0.03);
-          font-size: 0.8rem;
-          padding: 5px;
-          border-radius: 2px;
-          position: relative;
-        `}>
-          {mintermDecimalValue}
-          <p css={css`
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-          `}>
-            {mintermBinaryValue}
-          </p>
-        </div>
+        <GridButton 
+          decimalValue={mintermDecimalValue} 
+          binaryValue={mintermBinaryValue} 
+          gridValue={gridValues[mintermDecimalValue]}
+          onClick={onClick}
+        />
       </div>
     );
   });
@@ -56,7 +45,9 @@ function TableRow(props) {
 
 TableRow.propTypes = {
   topTerms: PropTypes.array.isRequired,
-  leftTerm: PropTypes.number.isRequired,
+  leftTerm: PropTypes.string.isRequired,
+  gridValues: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default TableRow;
