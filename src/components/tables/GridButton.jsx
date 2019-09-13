@@ -8,6 +8,13 @@ import colors from '../../util/colors';
 
 function GridButton(props) {
   const { binaryValue, decimalValue, gridValue, onClick } = props;
+  const valueStyling = (() => {
+    if (gridValue === '1') {
+      return 'border: 2px solid red;';
+    } else if (gridValue === 'X') {
+      return 'border: 2px solid orange;';
+    }
+  })();
   return (
     <button css={css`
         width: 100%;
@@ -19,6 +26,7 @@ function GridButton(props) {
           cursor: pointer;
           outline: 2px solid rgba(0, 0, 0, 0.3);
         }
+        ${valueStyling}
       `}
       onClick={() => onClick(decimalValue)}
     >
