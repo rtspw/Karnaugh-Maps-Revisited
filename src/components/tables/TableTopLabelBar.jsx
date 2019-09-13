@@ -27,6 +27,7 @@ function TableTopLabelBar(props) {
       display: flex;
       flex-direction: row;
       margin-bottom: 15px;
+      color: ${colors.main};
     `}>
       {labelElements}
     </div>

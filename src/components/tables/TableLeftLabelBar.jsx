@@ -29,6 +29,7 @@ function TableLeftLabelBar(props) {
     <div css={css`
       display: flex;
       flex-direction: column-reverse;
+      color: ${colors.main};
     `}>
       {labelElements}
     </div>

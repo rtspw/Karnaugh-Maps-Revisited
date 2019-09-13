@@ -14,7 +14,7 @@ function App() {
   const [varNumPage, setVarNumPage] = useState(2);
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill('0'));
   const [gridBoxSize, setGridBoxSize] = useState('200px');
-  const [mintermGroups, setMintermGroups] = useState({});
+  const [mintermGroups, setMintermGroups] = useState([]);
   const [activeMinterms, setActiveMinterms] = useState({
     terms: [],
     dontCares: [],
@@ -43,6 +43,7 @@ function App() {
     minterms.terms.forEach(term => newGridValues[term] = '1');
     minterms.dontCares.forEach(term => newGridValues[term] = 'X');
     setGridValues(newGridValues);
+    setMintermGroups(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups());
   }
 
   function onGridButtonClick(decimalValue) {
@@ -59,6 +60,7 @@ function App() {
     const dontCares = gridValuesCopy.map((x, idx) => (x === 'X') ? idx : null).filter(x => x !== null);
     const newActiveMinterms = { terms, dontCares };
     setActiveMinterms(newActiveMinterms);
+    console.log(new MintermList(varNumPage, terms, dontCares).getGroups());
     setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups());
   }
   console.log(mintermGroups);
@@ -81,6 +83,7 @@ function App() {
         gridValues={gridValues}
         onGridButtonClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
+        mintermGroups={mintermGroups}
       />
       <BottomBar 
         onMintermInput={onMintermInput}

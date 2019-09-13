@@ -10,20 +10,26 @@ import tableData from '../../util/tableData';
 import GridVisualTable from './GridVisualTable.jsx';
 
 function TableContainer(props) {
-  const { varNum, gridValues, onGridButtonClick, gridBoxSize } = props;
+  const { 
+    varNum, 
+    gridValues, 
+    onGridButtonClick, 
+    gridBoxSize,
+    mintermGroups,
+  } = props;
   const { 
     leftTerms, 
     topTerms,
     leftLabelMap,
     topLabelMap,
   } = tableData[varNum] ? tableData[varNum] : tableData['default'];
-
+  console.dir(mintermGroups, {depth: 100});
   return (
     <div css={css`
       display: flex;
       justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      align-items: flex-start;
+      flex-direction: row;
       padding: 40px 0;
       margin-bottom: 100px;
     `}>
@@ -36,6 +42,38 @@ function TableContainer(props) {
         onClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
       />
+      <div css={css`
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+      `}>
+        <div css={css`
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 15px;
+          text-align: center;
+          color: ${colors.main};
+          width: 200px;
+        `}>
+          Groups
+        </div>
+        {mintermGroups.map((group, idx) => {
+          return <div css={css`
+            padding: 10px;
+            max-width: 200px;
+          `}>
+            {'('}
+            {group.decimalRepresentation.map((dec, idx) => {
+              if (idx === group.decimalRepresentation.length - 1) return <span>{dec}</span>
+              return <span>{dec + ', '}</span>
+            })}
+            {')  '}
+            {group.outputTerm}
+          </div>
+        })}
+
+      </div>
+
     </div>
   );
 }
@@ -45,10 +83,12 @@ TableContainer.propTypes = {
   gridValues: PropTypes.array.isRequired,
   onGridButtonClick: PropTypes.func.isRequired,
   gridBoxSize: PropTypes.string,
+  mintermGroups: PropTypes.array,
 };
 
 TableContainer.defaultProps = {
   gridBoxSize: '75px',
+  mintermGroups: [],
 };
 
 export default TableContainer;
