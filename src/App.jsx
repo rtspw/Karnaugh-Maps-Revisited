@@ -43,7 +43,7 @@ function App() {
     minterms.terms.forEach(term => newGridValues[term] = '1');
     minterms.dontCares.forEach(term => newGridValues[term] = 'X');
     setGridValues(newGridValues);
-    setMintermGroups(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups());
+    setMintermGroups(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups()[0]);
   }
 
   function onGridButtonClick(decimalValue) {
@@ -61,7 +61,7 @@ function App() {
     const newActiveMinterms = { terms, dontCares };
     setActiveMinterms(newActiveMinterms);
     console.log(new MintermList(varNumPage, terms, dontCares).getGroups());
-    setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups());
+    setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups()[0]);
   }
   console.log(mintermGroups);
 

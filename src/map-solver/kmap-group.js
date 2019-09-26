@@ -1,8 +1,7 @@
 function convertMintermArraysToDecimalArray(minterms) {
   return minterms
     .map(minterm => {
-      const binaryRepresentation = minterm.terms.map(term => term ? '1' 
-: '0').join('');
+      const binaryRepresentation = minterm.terms.map(term => term ? '1' : '0').join('');
       return parseInt(binaryRepresentation, 2);
   })
 }
@@ -19,7 +18,7 @@ class KMapGroup {
       .sort((a, b) => a > b);
   }
 
-  getOutputTermRaw(variable) {
+  getOutputTermRaw() {
     if (this.outputTermRaw != null) return this.outputTermRaw;
     if (this.groupSize === 0) return null;
     const outputTerm = (new Array(this.mintermSize)).fill(-1);
@@ -44,5 +43,6 @@ class KMapGroup {
       .join('');
   }
 }
+
 
 export default KMapGroup;
