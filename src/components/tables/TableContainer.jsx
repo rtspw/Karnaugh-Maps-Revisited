@@ -8,6 +8,7 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 import tableData from '../../util/tableData';
 import GridVisualTable from './GridVisualTable.jsx';
+import GroupDisplay from './GroupDisplay.jsx';
 
 function TableContainer(props) {
   const { 
@@ -42,38 +43,7 @@ function TableContainer(props) {
         onClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
       />
-      <div css={css`
-        display: flex;
-        flex-direction: column;
-        margin-left: 50px;
-      `}>
-        <div css={css`
-          display: flex;
-          flex-direction: row;
-          margin-bottom: 15px;
-          text-align: center;
-          color: ${colors.main};
-          width: 200px;
-        `}>
-          Groups
-        </div>
-        {mintermGroups.map((group, idx) => {
-          return <div css={css`
-            padding: 10px;
-            max-width: 200px;
-          `}>
-            {'('}
-            {group.decimalRepresentation.map((dec, idx) => {
-              if (idx === group.decimalRepresentation.length - 1) return <span>{dec}</span>
-              return <span>{dec + ', '}</span>
-            })}
-            {')  '}
-            {group.outputTerm}
-          </div>
-        })}
-
-      </div>
-
+      <GroupDisplay mintermGroups={mintermGroups} />
     </div>
   );
 }

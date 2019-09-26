@@ -60,7 +60,6 @@ function App() {
     const dontCares = gridValuesCopy.map((x, idx) => (x === 'X') ? idx : null).filter(x => x !== null);
     const newActiveMinterms = { terms, dontCares };
     setActiveMinterms(newActiveMinterms);
-    console.log(new MintermList(varNumPage, terms, dontCares).getGroups());
     setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups()[0]);
   }
   console.log(mintermGroups);
