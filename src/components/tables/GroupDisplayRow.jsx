@@ -8,13 +8,13 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 
 function GroupDisplayRow(props) {
-  const { mintermGroup, key } = props;
+  const { mintermGroup } = props;
   return (
       <div css={css`
           padding: 10px;
           max-width: 200px;
         `}
-        key={key}>
+      >
           {'('}
           {mintermGroup.decimalRepresentation.map((dec, idx) => {
             if (idx === mintermGroup.decimalRepresentation.length - 1) return <span>{dec}</span>
@@ -28,7 +28,6 @@ function GroupDisplayRow(props) {
 
 GroupDisplayRow.propTypes = {
   mintermGroup: PropTypes.object.isRequired,
-  key: PropTypes.number.isRequired,
 };
 
 export default GroupDisplayRow;

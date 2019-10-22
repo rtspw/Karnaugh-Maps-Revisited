@@ -16,7 +16,7 @@ function TableContainer(props) {
     gridValues, 
     onGridButtonClick, 
     gridBoxSize,
-    mintermGroups,
+    mintermGroupings,
   } = props;
   const { 
     leftTerms, 
@@ -24,7 +24,7 @@ function TableContainer(props) {
     leftLabelMap,
     topLabelMap,
   } = tableData[varNum] ? tableData[varNum] : tableData['default'];
-  console.dir(mintermGroups, {depth: 100});
+
   return (
     <div css={css`
       display: flex;
@@ -32,7 +32,8 @@ function TableContainer(props) {
       align-items: flex-start;
       flex-direction: row;
       padding: 40px 0;
-      margin-bottom: 100px;
+      margin-bottom: 90px;
+      flex-wrap: wrap;
     `}>
       <GridVisualTable 
         leftTerms={leftTerms}
@@ -43,7 +44,7 @@ function TableContainer(props) {
         onClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
       />
-      <GroupDisplay mintermGroups={mintermGroups} />
+      <GroupDisplay mintermGroupings={mintermGroupings} key={mintermGroupings.length} />
     </div>
   );
 }
@@ -53,12 +54,12 @@ TableContainer.propTypes = {
   gridValues: PropTypes.array.isRequired,
   onGridButtonClick: PropTypes.func.isRequired,
   gridBoxSize: PropTypes.string,
-  mintermGroups: PropTypes.array,
+  mintermGroupings: PropTypes.array,
 };
 
 TableContainer.defaultProps = {
   gridBoxSize: '75px',
-  mintermGroups: [],
+  mintermGroupings: [],
 };
 
 export default TableContainer;

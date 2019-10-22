@@ -53,12 +53,12 @@ function GridVisualTable(props) {
     <div css={css`
       display: flex;
       flex-direction: rows;
+      padding-bottom: 20px;
     `}>
       <TableLeftLabelBar labels={leftLabels} gridBoxSize={gridBoxSize} />
       <div css={css`
         display: flex;
         flex-direction: column;
-        position: relative;
       `}>
         <TableTopLabelBar labels={topLabels} gridBoxSize={gridBoxSize} />
         { tableRows }

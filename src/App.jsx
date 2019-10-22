@@ -13,8 +13,8 @@ import MintermList from './map-solver/minterm-list';
 function App() {
   const [varNumPage, setVarNumPage] = useState(2);
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill('0'));
-  const [gridBoxSize, setGridBoxSize] = useState('200px');
-  const [mintermGroups, setMintermGroups] = useState([]);
+  const [gridBoxSize, setGridBoxSize] = useState(tableData[2].gridSize);
+  const [mintermGroupings, setMintermGroupings] = useState([]);
   const [activeMinterms, setActiveMinterms] = useState({
     terms: [],
     dontCares: [],
@@ -29,12 +29,12 @@ function App() {
     const newGridValues = new Array(Math.pow(2, varNum)).fill('0');
     setGridValues(newGridValues);
     setGridBoxSize(tableData[varNum].gridSize);
-    setMintermGroups([]);
+    setMintermGroupings([]);
   }
 
   function handleClearButtonClick() {
     setGridValues(new Array(Math.pow(2, varNumPage)).fill('0'));
-    setMintermGroups([]);
+    setMintermGroupings([]);
   }
 
   function onMintermInput(minterms) {
@@ -43,7 +43,7 @@ function App() {
     minterms.terms.forEach(term => newGridValues[term] = '1');
     minterms.dontCares.forEach(term => newGridValues[term] = 'X');
     setGridValues(newGridValues);
-    setMintermGroups(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups()[0]);
+    setMintermGroupings(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups());
   }
 
   function onGridButtonClick(decimalValue) {
@@ -60,10 +60,9 @@ function App() {
     const dontCares = gridValuesCopy.map((x, idx) => (x === 'X') ? idx : null).filter(x => x !== null);
     const newActiveMinterms = { terms, dontCares };
     setActiveMinterms(newActiveMinterms);
-    setMintermGroups(new MintermList(varNumPage, terms, dontCares).getGroups()[0]);
+    setMintermGroupings(new MintermList(varNumPage, terms, dontCares).getGroups());
   }
-  console.log(mintermGroups);
-
+  
   return (
     <div css={css`
       height: 100vh;
@@ -82,7 +81,7 @@ function App() {
         gridValues={gridValues}
         onGridButtonClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
-        mintermGroups={mintermGroups}
+        mintermGroupings={mintermGroupings}
       />
       <BottomBar 
         onMintermInput={onMintermInput}
