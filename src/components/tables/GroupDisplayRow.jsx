@@ -8,19 +8,35 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 
 function GroupDisplayRow(props) {
-  const { mintermGroup } = props;
+  const { mintermGroup, groupColor } = props;
+
+  const groupingText = mintermGroup.decimalRepresentation.map((dec, idx) => {
+    if (idx === mintermGroup.decimalRepresentation.length - 1) return dec;
+    return `${dec}, `;
+  });
+
+  groupingText.unshift('(');
+  groupingText.push(') ');
+
   return (
       <div css={css`
           padding: 10px;
+          padding-left: 0px;
           max-width: 200px;
+          display: flex;
+          align-items: center;
         `}
       >
-          {'('}
-          {mintermGroup.decimalRepresentation.map((dec, idx) => {
-            if (idx === mintermGroup.decimalRepresentation.length - 1) return <span>{dec}</span>
-            return <span>{dec + ', '}</span>
-          })}
-          {')  '}
+        <div css={css`
+          border-radius: 50%;
+          height: 12px;
+          width: 12px;
+          background: ${groupColor};
+          margin-right: 10px;
+          flex-shrink: 0;
+        `}>
+        </div>
+          { groupingText.join('') }
           {mintermGroup.outputTerm}
       </div>
   );
@@ -28,6 +44,11 @@ function GroupDisplayRow(props) {
 
 GroupDisplayRow.propTypes = {
   mintermGroup: PropTypes.object.isRequired,
+  groupColor: PropTypes.string,
+};
+
+GroupDisplayRow.defaultProps = {
+  groupColor: 'grey',
 };
 
 export default GroupDisplayRow;
