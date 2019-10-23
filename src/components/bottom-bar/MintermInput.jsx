@@ -51,7 +51,7 @@ function MintermInput(props) {
       css={css`
         display: flex;
         justify-content: center;
-        width: 500px;
+        width: 100%;
         padding: 0 1.5rem;
       `}
       onSubmit={ onFormSubmit }

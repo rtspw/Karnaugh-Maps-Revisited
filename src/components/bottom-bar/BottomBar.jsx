@@ -25,6 +25,10 @@ function BottomBar(props) {
       <div css={css`
         display: flex;
         flex-direction: row;
+        width: 70%;
+        @media (max-width: 584px) {
+          display: none;
+        }
       `}>
         <MintermInput onMintermInput={onMintermInput} />
         <ClearButton onClick={onClearButtonClick} />
