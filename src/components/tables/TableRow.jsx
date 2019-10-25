@@ -26,6 +26,7 @@ function TableRow(props) {
           decimalValue={mintermDecimalValue} 
           binaryValue={mintermBinaryValue} 
           gridValue={gridValues[mintermDecimalValue]}
+          gridBoxSize={gridBoxSize}
           onClick={onClick}
         />
       </div>
