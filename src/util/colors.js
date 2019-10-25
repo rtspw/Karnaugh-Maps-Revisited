@@ -8,4 +8,34 @@ const colors = {
     gridButtonDontCare: 'orange',
 };
 
+export const tempGroupingColors = [
+    '#ff000044',
+    '#00ff0044',
+    '#0000ff44',
+    '#ffa50044',
+    '#ffff0066',
+    '#00800044',
+    '#6b8e2344',
+    '#00ffff44',
+    '#008b8b44',
+    '#ff00ff44',
+    '#8b008b44',
+    '#ff69b444',
+    '#70809044',
+    'rgba(30, 30, 200, 0.4)', 
+    'rgba(200, 100, 100, 0.4)', 
+    'rgba(100, 200, 150, 0.4)',
+    '#20b2aa66',
+    '#80008066',
+    '#4b008266',
+    '#ffa07a66',
+    '#afeeee66',
+    '#1e90ff66',
+    '#adff2f66',
+    '#cd5c5c66',
+    '#ff149366',
+    '#6a5acd66',
+    '#ff7f5066',
+];
+
 export default colors;

@@ -6,7 +6,7 @@ import TopBar from './components/TopBar.jsx';
 import BottomBar from './components/bottom-bar/BottomBar.jsx';
 import TableContainer from './components/tables/TableContainer.jsx';
 
-import colors from './util/colors';
+import colors, { tempGroupingColors } from './util/colors';
 import tableData from './util/tableData';
 import MintermList from './map-solver/minterm-list';
 
@@ -45,10 +45,13 @@ function App() {
   function onMintermInput(minterms) {
     setActiveMinterms(minterms);
     const newGridValues = new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData());
-    minterms.terms.forEach(term => newGridValues[term].value = '1');
-    minterms.dontCares.forEach(term => newGridValues[term].value = 'X');
+    minterms.terms.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = '1');
+    minterms.dontCares.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = 'X');
+    const mintermGroupings = new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups();
+    setMintermGroupings(mintermGroupings);
+    resetGridColors(newGridValues);
+    setupGridColors(newGridValues, mintermGroupings);
     setGridValues(newGridValues);
-    setMintermGroupings(new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups());
   }
 
   function onGridButtonClick(decimalValue) {
@@ -57,18 +60,37 @@ function App() {
     console.log(gridValuesCopy)
     if (gridValues[decimalValue].value === '0') {
       gridValuesCopy[decimalValue].value = '1';
-      gridValuesCopy[decimalValue].colors = ['rgba(30, 30, 200, 0.1)', 'rgba(200, 100, 100, 0.1)', 'rgba(100, 200, 150, 0.1)'];
     } else if (gridValues[decimalValue].value === '1') {
       gridValuesCopy[decimalValue].value = 'X';
     } else {
       gridValuesCopy[decimalValue].value = '0';
     }
-    setGridValues(gridValuesCopy);
     const terms = gridValuesCopy.map((x, idx) => (x.value === '1') ? idx : null).filter(x => x !== null);
     const dontCares = gridValuesCopy.map((x, idx) => (x.value === 'X') ? idx : null).filter(x => x !== null);
     const newActiveMinterms = { terms, dontCares };
+    const mintermGroupings = new MintermList(varNumPage, terms, dontCares).getGroups();
     setActiveMinterms(newActiveMinterms);
-    setMintermGroupings(new MintermList(varNumPage, terms, dontCares).getGroups());
+    setMintermGroupings(mintermGroupings);
+    resetGridColors(gridValuesCopy);
+    setupGridColors(gridValuesCopy, mintermGroupings);
+    setGridValues(gridValuesCopy);
+  }
+  
+  /* Warning: Mutates gridValues */
+  function resetGridColors(gridValues) {
+    gridValues.forEach(gridValue => {
+      gridValue.colors = [];
+    })
+  }
+
+  /* Warning: Mutates gridValues and groupings */
+  function setupGridColors(gridValues, groupings = []) {
+    groupings[0].forEach((group, groupingIdx) => {
+      group.color = tempGroupingColors[groupingIdx];
+      group.decimalRepresentation.forEach(gridIdx => {
+        gridValues[gridIdx].colors.push(tempGroupingColors[groupingIdx]);
+      });
+    });
   }
 
   return (

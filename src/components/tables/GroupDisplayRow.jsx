@@ -8,7 +8,7 @@ import { jsx, css } from '@emotion/core';
 import colors from '../../util/colors';
 
 function GroupDisplayRow(props) {
-  const { mintermGroup, groupColor } = props;
+  const { mintermGroup } = props;
 
   const groupingText = mintermGroup.decimalRepresentation.map((dec, idx) => {
     if (idx === mintermGroup.decimalRepresentation.length - 1) return dec;
@@ -31,7 +31,7 @@ function GroupDisplayRow(props) {
           border-radius: 50%;
           height: 12px;
           width: 12px;
-          background: ${groupColor};
+          background: ${mintermGroup.color};
           margin-right: 10px;
           flex-shrink: 0;
         `}>
@@ -44,11 +44,7 @@ function GroupDisplayRow(props) {
 
 GroupDisplayRow.propTypes = {
   mintermGroup: PropTypes.object.isRequired,
-  groupColor: PropTypes.string,
 };
 
-GroupDisplayRow.defaultProps = {
-  groupColor: 'grey',
-};
 
 export default GroupDisplayRow;
