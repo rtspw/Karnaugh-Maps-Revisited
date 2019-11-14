@@ -20,6 +20,7 @@ function App() {
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
   const [gridBoxSize, setGridBoxSize] = useState(tableData[2].gridSize);
   const [mintermGroupings, setMintermGroupings] = useState([]);
+  const [selectedMintermGroup, setSelectedMintermGroup ] = useState(0);
   const [activeMinterms, setActiveMinterms] = useState({
     terms: [],
     dontCares: [],
@@ -40,9 +41,25 @@ function App() {
   function handleClearButtonClick() {
     setGridValues(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
     setMintermGroupings([]);
+    setSelectedMintermGroup(0);
+  }
+
+  function handleNextGroupingButtonClick() {
+    let next = (() => {
+      if (selectedMintermGroup + 1 >= mintermGroupings.length) return 0;
+      return selectedMintermGroup + 1;
+    })();
+    setSelectedMintermGroup(next);
+    const newGridValues = new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData());
+    activeMinterms.terms.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = '1');
+    activeMinterms.dontCares.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = 'X');
+    resetGridColors(newGridValues);
+    setupGridColors(newGridValues, mintermGroupings[next]);
+    setGridValues(newGridValues);
   }
 
   function onMintermInput(minterms) {
+    setSelectedMintermGroup(0);
     setActiveMinterms(minterms);
     const newGridValues = new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData());
     minterms.terms.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = '1');
@@ -50,11 +67,12 @@ function App() {
     const mintermGroupings = new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups();
     setMintermGroupings(mintermGroupings);
     resetGridColors(newGridValues);
-    setupGridColors(newGridValues, mintermGroupings);
+    setupGridColors(newGridValues, mintermGroupings[0]);
     setGridValues(newGridValues);
   }
 
   function onGridButtonClick(decimalValue) {
+    setSelectedMintermGroup(0);
     const gridValuesCopy = new Array(gridValues.length).fill()
       .map((_, idx) => JSON.parse(JSON.stringify(gridValues[idx])));
     console.log(gridValuesCopy)
@@ -72,7 +90,7 @@ function App() {
     setActiveMinterms(newActiveMinterms);
     setMintermGroupings(mintermGroupings);
     resetGridColors(gridValuesCopy);
-    setupGridColors(gridValuesCopy, mintermGroupings);
+    setupGridColors(gridValuesCopy, mintermGroupings[0]);
     setGridValues(gridValuesCopy);
   }
   
@@ -84,8 +102,8 @@ function App() {
   }
 
   /* Warning: Mutates gridValues and groupings */
-  function setupGridColors(gridValues, groupings = []) {
-    groupings[0].forEach((group, groupingIdx) => {
+  function setupGridColors(gridValues, grouping = []) {
+    grouping.forEach((group, groupingIdx) => {
       group.color = tempGroupingColors[groupingIdx];
       group.decimalRepresentation.forEach(gridIdx => {
         gridValues[gridIdx].colors.push(tempGroupingColors[groupingIdx]);
@@ -110,8 +128,11 @@ function App() {
         varNum={varNumPage}
         gridValues={gridValues}
         onGridButtonClick={onGridButtonClick}
+        onNextGroupingButtonClick={handleNextGroupingButtonClick}
         gridBoxSize={gridBoxSize}
-        mintermGroupings={mintermGroupings}
+        mintermGroups={mintermGroupings[selectedMintermGroup]}
+        numberOfGroupings={mintermGroupings.length}
+        selectedMintermGroup={selectedMintermGroup}
       />
       <BottomBar 
         onMintermInput={onMintermInput}

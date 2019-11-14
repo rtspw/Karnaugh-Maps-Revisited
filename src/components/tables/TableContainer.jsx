@@ -16,7 +16,10 @@ function TableContainer(props) {
     gridValues, 
     onGridButtonClick, 
     gridBoxSize,
-    mintermGroupings,
+    mintermGroups,
+    selectedMintermGroup,
+    onNextGroupingButtonClick,
+    numberOfGroupings,
   } = props;
   const { 
     leftTerms, 
@@ -44,7 +47,13 @@ function TableContainer(props) {
         onClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
       />
-      <GroupDisplay mintermGroupings={mintermGroupings} key={mintermGroupings.length} />
+      <GroupDisplay 
+        mintermGroups={mintermGroups} 
+        key={mintermGroups.length} 
+        selectedMintermGroup={selectedMintermGroup}
+        numberOfGroupings={numberOfGroupings}
+        onNextGroupingButtonClick={onNextGroupingButtonClick}
+      />
     </div>
   );
 }
@@ -53,13 +62,18 @@ TableContainer.propTypes = {
   varNum: PropTypes.number.isRequired,
   gridValues: PropTypes.array.isRequired,
   onGridButtonClick: PropTypes.func.isRequired,
+  onNextGroupingButtonClick: PropTypes.func.isRequired,
+  selectedMintermGroup: PropTypes.number,
   gridBoxSize: PropTypes.string,
-  mintermGroupings: PropTypes.array,
+  mintermGroups: PropTypes.array,
+  numberOfGroupings: PropTypes.number,
 };
 
 TableContainer.defaultProps = {
+  selectedMintermGroup: 0,
   gridBoxSize: '75px',
-  mintermGroupings: [],
+  mintermGroups: [],
+  numberOfGroupings: 1,
 };
 
 export default TableContainer;
