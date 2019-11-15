@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Karnaugh-Maps-Revisited/precache-manifest.357c26c91060b3fcd6d2f2e1185e243e.js"
+  "/Karnaugh-Maps-Revisited/precache-manifest.29b8a74f47292280e8135c5bf67ecce1.js"
 );
 
 self.addEventListener('message', (event) => {

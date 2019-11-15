@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Karnaugh-Maps-Revisited/static/css/main.cc27e018.chunk.css",
-    "main.js": "/Karnaugh-Maps-Revisited/static/js/main.6babd8f1.chunk.js",
-    "main.js.map": "/Karnaugh-Maps-Revisited/static/js/main.6babd8f1.chunk.js.map",
+    "main.js": "/Karnaugh-Maps-Revisited/static/js/main.4f3943ce.chunk.js",
+    "main.js.map": "/Karnaugh-Maps-Revisited/static/js/main.4f3943ce.chunk.js.map",
     "runtime~main.js": "/Karnaugh-Maps-Revisited/static/js/runtime~main.7a311729.js",
     "runtime~main.js.map": "/Karnaugh-Maps-Revisited/static/js/runtime~main.7a311729.js.map",
-    "static/js/2.a24bd8c3.chunk.js": "/Karnaugh-Maps-Revisited/static/js/2.a24bd8c3.chunk.js",
-    "static/js/2.a24bd8c3.chunk.js.map": "/Karnaugh-Maps-Revisited/static/js/2.a24bd8c3.chunk.js.map",
+    "static/js/2.f5e76671.chunk.js": "/Karnaugh-Maps-Revisited/static/js/2.f5e76671.chunk.js",
+    "static/js/2.f5e76671.chunk.js.map": "/Karnaugh-Maps-Revisited/static/js/2.f5e76671.chunk.js.map",
     "index.html": "/Karnaugh-Maps-Revisited/index.html",
-    "precache-manifest.357c26c91060b3fcd6d2f2e1185e243e.js": "/Karnaugh-Maps-Revisited/precache-manifest.357c26c91060b3fcd6d2f2e1185e243e.js",
+    "precache-manifest.29b8a74f47292280e8135c5bf67ecce1.js": "/Karnaugh-Maps-Revisited/precache-manifest.29b8a74f47292280e8135c5bf67ecce1.js",
     "service-worker.js": "/Karnaugh-Maps-Revisited/service-worker.js",
     "static/css/main.cc27e018.chunk.css.map": "/Karnaugh-Maps-Revisited/static/css/main.cc27e018.chunk.css.map"
   }
