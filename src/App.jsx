@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { jsx, Global, css } from '@emotion/core';
+import Cookies from 'universal-cookie';
 /** @jsx jsx */
 
 import TopBar from './components/TopBar.jsx';
@@ -10,15 +11,19 @@ import colors, { tempGroupingColors } from './util/colors';
 import tableData from './util/tableData';
 import MintermList from './map-solver/minterm-list';
 
+const cookies = new Cookies();
+
+const initialVarNumPage = cookies.get('varNumPage') || '4';
+
 function GridButtonData() {
   this.value = '0';
   this.colors = [];
 }
 
 function App() {
-  const [varNumPage, setVarNumPage] = useState(2);
+  const [varNumPage, setVarNumPage] = useState(parseInt(initialVarNumPage, 10));
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
-  const [gridBoxSize, setGridBoxSize] = useState(tableData[2].gridSize);
+  const [gridBoxSize, setGridBoxSize] = useState(tableData[varNumPage].gridSize);
   const [mintermGroupings, setMintermGroupings] = useState([]);
   const [selectedMintermGroup, setSelectedMintermGroup ] = useState(0);
   const [activeMinterms, setActiveMinterms] = useState({
@@ -28,7 +33,8 @@ function App() {
   
   useEffect(() => {
     document.title = `${varNumPage} Variable K-Map Visual`;
-  });
+    cookies.set('varNumPage', varNumPage, {maxAge: 604800});
+  }, [varNumPage]);
 
   /* Changes which table is displayed */
   function handlePanelClick(varNum) {
