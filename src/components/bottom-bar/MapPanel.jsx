@@ -26,7 +26,7 @@ function MapPanel(props) {
         background: white;
         border-radius: 5px;
         height: 40px;
-        border: 2px solid ${colors.main};
+        border: 2.5px solid ${colors.main};
       `}>
 
         <ul css={css`

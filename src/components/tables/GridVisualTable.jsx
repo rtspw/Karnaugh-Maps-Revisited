@@ -54,6 +54,7 @@ function GridVisualTable(props) {
       display: flex;
       flex-direction: rows;
       padding-bottom: 20px;
+      flex-shrink: 0;
     `}>
       <TableLeftLabelBar labels={leftLabels} gridBoxSize={gridBoxSize} />
       <div css={css`

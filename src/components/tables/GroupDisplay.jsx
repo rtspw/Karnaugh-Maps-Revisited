@@ -18,16 +18,27 @@ function GroupDisplay(props) {
   return (
     <div css={css`
       display: flex;
+      flex-shrink: 0;
       flex-direction: column;
       margin-left: 50px;
+      width: 200px;
+      @media (max-width: 600px) {
+        width: 80%;
+        margin-left: 0;
+        padding-top: 20px;
+      }
     `}>
       <div css={css`
         display: flex;
         flex-direction: row;
-        margin-bottom: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
         text-align: center;
         color: ${colors.main};
-        width: 200px;
+        width: 100%;
+        @media (max-width: 600px) {
+          border-bottom: 1.5px solid ${colors.minor};
+        }
       `}>
         <h4>Groups ({ mintermGroups.length })</h4>
         { numberOfGroupings > 1 &&

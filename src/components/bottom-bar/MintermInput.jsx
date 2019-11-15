@@ -68,7 +68,7 @@ function MintermInput(props) {
         Minterms
         <input 
           css={css`
-            border: 2px solid ${colors.main};
+            border: 2.5px solid ${colors.main};
             border-radius: 5px;
             height: 40px;
             text-align: center;

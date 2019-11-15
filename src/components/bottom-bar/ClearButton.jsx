@@ -13,7 +13,7 @@ const buttonStyle = css`
   color: ${colors.main};
   background: white;
   border-radius: 5px;
-  border: 2px solid ${colors.main};
+  border: 2.5px solid ${colors.main};
   font-weight: bold;
   cursor: pointer;
   &:hover {

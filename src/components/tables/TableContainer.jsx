@@ -36,7 +36,10 @@ function TableContainer(props) {
       flex-direction: row;
       padding: 40px 0;
       margin-bottom: 90px;
-      flex-wrap: wrap;
+      flex-wrap: no-wrap;
+      @media (max-width: 600px) {
+        flex-wrap: wrap;
+      }
     `}>
       <GridVisualTable 
         leftTerms={leftTerms}

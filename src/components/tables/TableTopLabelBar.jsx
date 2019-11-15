@@ -16,6 +16,10 @@ function TableTopLabelBar(props) {
       width: ${gridBoxSize};
       text-align: center;
       ${separatorStyling}
+      @media (max-width: 600px) {
+        width: ${parseInt(gridBoxSize, 10)/2}px;
+        font-size: 0.9rem;
+      }
     `}>
       {label}
     </div>);

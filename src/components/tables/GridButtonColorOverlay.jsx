@@ -17,11 +17,14 @@ function GridButtonColorOverlay(props) {
   const overlay = groupingColors.map((color, idx) => {
     return <div css={css`
       position: absolute;
-      height: ${baseSize}px;
-      width: ${baseSize / groupingColors.length}px;
+      height: ${baseSize / groupingColors.length}px;
+      width: ${baseSize}px;
       background: ${color};
-      top: 0;
-      left: ${(baseSize / groupingColors.length) * idx}px;
+      left: 0;
+      top: ${(baseSize / groupingColors.length) * idx}px;
+      @media (max-width: 600px) {
+        width: ${baseSize/2 - 3}px;
+      }
     `}/>
   });
 

@@ -22,7 +22,6 @@ function GroupDisplayRow(props) {
       <div css={css`
           padding: 10px;
           padding-left: 0px;
-          max-width: 200px;
           display: flex;
           align-items: center;
         `}

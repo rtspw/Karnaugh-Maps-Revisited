@@ -17,9 +17,9 @@ function GridButton(props) {
 
   const valueStyling = (() => {
     if (gridValue.value === '1') {
-      return `border: 2px solid ${colors.gridButtonTrue};`;
+      return `border: 2.5px solid ${colors.gridButtonTrue};`;
     } else if (gridValue.value === 'X') {
-      return `border: 2px solid ${colors.gridButtonDontCare};`;
+      return `border: 2.5px solid ${colors.gridButtonDontCare};`;
     }
   })();
   return (
@@ -59,6 +59,9 @@ function GridButton(props) {
         bottom: 5px;
         right: 5px;
         font-size: 0.8rem;
+        @media (max-width: 600px) {
+          display: none;
+        }
       `}>
         {binaryValue}
       </p>

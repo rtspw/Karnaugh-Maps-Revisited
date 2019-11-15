@@ -20,6 +20,9 @@ function TableLeftLabelBar(props) {
       padding: 0 2px;
       margin-right: 15px;
       ${separatorStyling}
+      @media (max-width: 600px) {
+        font-size: 0.9rem;
+      }
     `}>
       {label}
     </div>);

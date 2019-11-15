@@ -21,6 +21,9 @@ function TableRow(props) {
         width: ${gridBoxSize};
         padding: 2px;
         ${separatorStyling}
+        @media (max-width: 600px) {
+          width: ${parseInt(gridBoxSize, 10)/2}px;
+        }
       `}>
         <GridButton 
           decimalValue={mintermDecimalValue} 
