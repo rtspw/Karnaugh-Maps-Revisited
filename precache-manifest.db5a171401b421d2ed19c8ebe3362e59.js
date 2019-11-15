@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c03b218ad69238e48ceb5b64fa5b2b2a",
+    "revision": "711c44db7d971f2456e2cc16d76fb8bc",
     "url": "/Karnaugh-Maps-Revisited/index.html"
   },
   {
-    "revision": "44e275296ed6d75fa79a",
+    "revision": "45bdbe467f576dbc8c32",
     "url": "/Karnaugh-Maps-Revisited/static/css/main.cc27e018.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Karnaugh-Maps-Revisited/static/js/2.f5e76671.chunk.js"
   },
   {
-    "revision": "44e275296ed6d75fa79a",
-    "url": "/Karnaugh-Maps-Revisited/static/js/main.ccb7bdd5.chunk.js"
+    "revision": "45bdbe467f576dbc8c32",
+    "url": "/Karnaugh-Maps-Revisited/static/js/main.7d11da8b.chunk.js"
   },
   {
     "revision": "b5fbcc295f6c5869fc9e",
