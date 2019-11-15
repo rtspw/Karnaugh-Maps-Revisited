@@ -40,6 +40,7 @@ function GridButton(props) {
       <GridButtonColorOverlay 
         groupingColors={gridValue.colors} 
         gridBoxSize={gridBoxSize}
+        highlighted={gridValue.highlighted}
       />
       <p css={css`
         font-size: 1rem;

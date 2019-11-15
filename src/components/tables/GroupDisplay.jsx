@@ -13,7 +13,17 @@ function GroupDisplay(props) {
     mintermGroups, 
     onNextGroupingButtonClick,
     numberOfGroupings,
+    setHighlightedMinterms,
   } = props;
+
+  function onMouseEnterRow(group) {
+    console.dir(group, {depth:100})
+    setHighlightedMinterms(group.decimalRepresentation);
+  }
+
+  function onMouseLeaveRow() {
+    setHighlightedMinterms([]);
+  }  
 
   return (
     <div css={css`
@@ -57,7 +67,12 @@ function GroupDisplay(props) {
         }
       </div>
       { mintermGroups.map((group, idx) =>
-        <GroupDisplayRow mintermGroup={group} key={idx} />
+        <div 
+          onMouseEnter={onMouseEnterRow.bind(null, group)} 
+          onMouseLeave={onMouseLeaveRow}
+        >
+          <GroupDisplayRow mintermGroup={group} key={idx} />
+        </div>
       )}
     </div>
   );
@@ -67,6 +82,7 @@ GroupDisplay.propTypes = {
   mintermGroupings: PropTypes.array,
   onNextGroupingButtonClick: PropTypes.func.isRequired,
   numberOfGroupings: PropTypes.number.isRequired,
+  setHighlightedMinterms: PropTypes.func.isRequired,
 };
 
 GroupDisplay.defaultProps = {

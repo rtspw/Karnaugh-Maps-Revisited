@@ -29,6 +29,7 @@ function GridVisualTable(props) {
     gridValues,
     onClick,
     gridBoxSize,
+    highlightedMinterms,
   } = props;
 
   const leftLabels = leftTerms.map(term => convertBinaryStringToVariableMinterm(term, leftLabelMap));
@@ -38,7 +39,8 @@ function GridVisualTable(props) {
     const separatorStyling = (idx !== 0 && idx % 4 === 0) ? 'margin-top: 15px;' : '';
     return <div css={css`
       ${separatorStyling}
-    `}>
+    `}
+    >
       <TableRow 
         topTerms={topTerms} 
         leftTerm={leftTerm} 
@@ -76,6 +78,7 @@ GridVisualTable.propTypes = {
   gridValues: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   gridBoxSize: PropTypes.string.isRequired,
+  highlightedMinterms: PropTypes.array.isRequired,
 };
 
 export default GridVisualTable;

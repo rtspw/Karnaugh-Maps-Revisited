@@ -10,9 +10,20 @@ function GridButtonColorOverlay(props) {
   const { 
     groupingColors,
     gridBoxSize,
+    highlighted,
   } = props;
 
   const baseSize = parseInt(gridBoxSize, 10) - 8;
+
+  const test = highlighted ? `&::before {
+    content: '';
+    background: #ffffff66;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }` : '';
 
   const overlay = groupingColors.map((color, idx) => {
     return <div css={css`
@@ -25,6 +36,7 @@ function GridButtonColorOverlay(props) {
       @media (max-width: 600px) {
         width: ${baseSize/2 - 3}px;
       }
+      ${test}
     `}/>
   });
 
@@ -38,10 +50,12 @@ function GridButtonColorOverlay(props) {
 GridButtonColorOverlay.propTypes = {
   groupingColors: PropTypes.array,
   gridBoxSize: PropTypes.string.isRequired,
+  highlighted: PropTypes.bool,
 };
 
 GridButtonColorOverlay.defaultProps = {
   groupingColors: [],
+  highlighted: false,
 };
 
 export default GridButtonColorOverlay;

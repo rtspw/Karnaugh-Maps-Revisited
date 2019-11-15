@@ -18,6 +18,7 @@ const initialVarNumPage = cookies.get('varNumPage') || '4';
 function GridButtonData() {
   this.value = '0';
   this.colors = [];
+  this.highlighted = false;
 }
 
 function generateNewGrid(varNum = 6) {
@@ -31,7 +32,7 @@ function fillNewGrid(newGrid, minterms, varNum) {
 
 function App() {
   const [varNumPage, setVarNumPage] = useState(parseInt(initialVarNumPage, 10));
-  const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
+  const [gridValues, setGridValues] = useState(generateNewGrid(varNumPage));
   const [gridBoxSize, setGridBoxSize] = useState(tableData[varNumPage].gridSize);
   const [mintermGroupings, setMintermGroupings] = useState([]);
   const [selectedMintermGroup, setSelectedMintermGroup ] = useState(0);

@@ -11,6 +11,8 @@ import GridVisualTable from './GridVisualTable.jsx';
 import GroupDisplay from './GroupDisplay.jsx';
 
 function TableContainer(props) {
+
+  const [highlightedMinterms, setHighlightedMinterms] = useState([]);
   const { 
     varNum, 
     gridValues, 
@@ -27,6 +29,14 @@ function TableContainer(props) {
     leftLabelMap,
     topLabelMap,
   } = tableData[varNum] ? tableData[varNum] : tableData['default'];
+
+  gridValues.forEach(gridValues => {
+    gridValues.highlighted = false;
+  })
+
+  highlightedMinterms.forEach((decimalIndex) => {
+    gridValues[decimalIndex].highlighted = true;
+  });
 
   return (
     <div css={css`
@@ -49,6 +59,7 @@ function TableContainer(props) {
         gridValues={gridValues}
         onClick={onGridButtonClick}
         gridBoxSize={gridBoxSize}
+        highlightedMinterms={highlightedMinterms}
       />
       <GroupDisplay 
         mintermGroups={mintermGroups} 
@@ -56,6 +67,7 @@ function TableContainer(props) {
         selectedMintermGroup={selectedMintermGroup}
         numberOfGroupings={numberOfGroupings}
         onNextGroupingButtonClick={onNextGroupingButtonClick}
+        setHighlightedMinterms={setHighlightedMinterms}
       />
     </div>
   );
