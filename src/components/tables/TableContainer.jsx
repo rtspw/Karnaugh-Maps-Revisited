@@ -34,8 +34,8 @@ function TableContainer(props) {
       justify-content: center;
       align-items: flex-start;
       flex-direction: row;
-      padding: 40px 0;
-      margin-bottom: 90px;
+      padding-top: 40px;
+      padding-bottom: 120px;
       flex-wrap: no-wrap;
       @media (max-width: 600px) {
         flex-wrap: wrap;

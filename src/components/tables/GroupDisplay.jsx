@@ -21,11 +21,12 @@ function GroupDisplay(props) {
       flex-shrink: 0;
       flex-direction: column;
       margin-left: 50px;
-      width: 200px;
+      width: 300px;
       @media (max-width: 600px) {
         width: 80%;
         margin-left: 0;
         padding-top: 20px;
+        padding-bottom: 100px;
       }
     `}>
       <div css={css`
