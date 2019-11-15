@@ -20,6 +20,15 @@ function GridButtonData() {
   this.colors = [];
 }
 
+function generateNewGrid(varNum = 6) {
+  return new Array(Math.pow(2, varNum)).fill().map(() => new GridButtonData());
+}
+
+function fillNewGrid(newGrid, minterms, varNum) {
+  minterms.terms.filter(term => term < Math.pow(2, varNum)).forEach(term => newGrid[term].value = '1');
+  minterms.dontCares.filter(term => term < Math.pow(2, varNum)).forEach(term => newGrid[term].value = 'X');
+}
+
 function App() {
   const [varNumPage, setVarNumPage] = useState(parseInt(initialVarNumPage, 10));
   const [gridValues, setGridValues] = useState(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
@@ -36,47 +45,53 @@ function App() {
     cookies.set('varNumPage', varNumPage, {maxAge: 604800});
   }, [varNumPage]);
 
-  /* Changes which table is displayed */
+  /**
+   * Changes which table is displayed 
+   */
   function handlePanelClick(varNum) {
     setVarNumPage(varNum);
-    const newGridValues = new Array(Math.pow(2, varNum)).fill().map(() => new GridButtonData());
+    const newGridValues = generateNewGrid(varNum);
     setGridValues(newGridValues);
     setGridBoxSize(tableData[varNum].gridSize);
     setMintermGroupings([]);
   }
 
-  /* Resets the table completely with blank grid values */
+  /**
+   * Resets the table completely with blank grid values 
+   */
   function handleClearButtonClick() {
-    setGridValues(new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData()));
+    setGridValues(generateNewGrid(varNumPage));
     setMintermGroupings([]);
     setSelectedMintermGroup(0);
   }
 
-  /* When there is more than one possible solution detected, a next button will 
+  /** 
+   * When there is more than one possible solution detected, a next button will 
    * appear next to the group display box. Clicking this button cycles to the
-   * next solution and updates the colors of the grid values */
+   * next solution and updates the colors of the grid values
+   */
   function handleNextGroupingButtonClick() {
     let next = (() => {
       if (selectedMintermGroup + 1 >= mintermGroupings.length) return 0;
       return selectedMintermGroup + 1;
     })();
     setSelectedMintermGroup(next);
-    const newGridValues = new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData());
-    activeMinterms.terms.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = '1');
-    activeMinterms.dontCares.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = 'X');
+    const newGridValues = generateNewGrid(varNumPage);
+    fillNewGrid(newGridValues, activeMinterms, varNumPage);
     resetGridColors(newGridValues);
     setupGridColors(newGridValues, mintermGroupings[next]);
     setGridValues(newGridValues);
   }
 
-  /* Handles input through the text bar
-   * Updates table/grid values with new groupings */
+  /**
+   * Handles input through the text bar
+   * Updates table/grid values with new groupings 
+   */
   function onMintermInput(minterms) {
     setSelectedMintermGroup(0);
     setActiveMinterms(minterms);
-    const newGridValues = new Array(Math.pow(2, varNumPage)).fill().map(() => new GridButtonData());
-    minterms.terms.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = '1');
-    minterms.dontCares.filter(term => term < Math.pow(2, varNumPage)).forEach(term => newGridValues[term].value = 'X');
+    const newGridValues = generateNewGrid(varNumPage);
+    fillNewGrid(newGridValues, minterms, varNumPage);
     const mintermGroupings = new MintermList(varNumPage, minterms.terms, minterms.dontCares).getGroups();
     setMintermGroupings(mintermGroupings);
     resetGridColors(newGridValues);
@@ -84,9 +99,11 @@ function App() {
     setGridValues(newGridValues);
   }
 
-  /* Handles button click when table is clicked
+  /**
+   * Handles button click when table is clicked
    * Creates a new copy of the values and sets groupings in the copy
-   * Then, the app is updated with the copy */
+   * Then, the app is updated with the copy 
+   */
   function onGridButtonClick(decimalValue) {
     setSelectedMintermGroup(0);
     const gridValuesCopy = new Array(gridValues.length).fill()
@@ -114,8 +131,11 @@ function App() {
     })
   }
 
-  /* Warning: Mutates gridValues */
-  /* Adds a color array to the grid values depending on the groupings */
+  
+  /**
+   * !! Warning: Mutates gridValues !!
+   * Adds a color array to the grid values depending on the groupings 
+   */
   function setupGridColors(gridValues, grouping = []) {
     grouping.forEach((group, groupingIdx) => {
       group.color = tempGroupingColors[groupingIdx];
