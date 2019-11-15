@@ -31,3 +31,12 @@ button {
 label:hover {
   background: none;
 }
+
+@keyframes pop {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}

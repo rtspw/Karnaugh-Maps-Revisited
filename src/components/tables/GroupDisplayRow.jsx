@@ -21,9 +21,13 @@ function GroupDisplayRow(props) {
   return (
       <div css={css`
           padding: 10px;
-          padding-left: 0px;
+          padding-left: 10px;
           display: flex;
           align-items: center;
+          cursor: pointer;
+          &:hover {
+            background: #ffffff88;
+          }
         `}
       >
         <div css={css`
